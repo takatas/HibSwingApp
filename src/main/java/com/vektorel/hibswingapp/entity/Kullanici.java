@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table (name = "kullanici")
+@Table(name = "kullanici")
 
 public class Kullanici implements Serializable {
 
@@ -29,10 +29,21 @@ public class Kullanici implements Serializable {
     private String password;
     private String adSoyad;
 
+    public Kullanici() {
+    }
+
+    public Kullanici(Long id, String username, String password, String adSoyad) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.adSoyad = adSoyad;
+    }
+
     @Id
-    @SequenceGenerator (name = "seq_kullanici", allocationSize = 1, sequenceName = "seq_kullanici")
-    @GeneratedValue (generator = "seq_kullanci", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_kullanici", allocationSize = 1, sequenceName = "seq_kullanici")
+    @GeneratedValue(generator = "seq_kullanici", strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
+
     public Long getId() {
         return id;
     }
@@ -41,7 +52,7 @@ public class Kullanici implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "username", length = 25)
+    @Column(name = "username", length = 50, unique = true)
     public String getUsername() {
         return username;
     }
@@ -50,7 +61,7 @@ public class Kullanici implements Serializable {
         this.username = username;
     }
 
-    @Column(name = "password", length = 25)
+    @Column(name = "password", length = 50)
     public String getPassword() {
         return password;
     }
@@ -67,7 +78,10 @@ public class Kullanici implements Serializable {
     public void setAdSoyad(String adSoyad) {
         this.adSoyad = adSoyad;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Kullanici{" + "id=" + id + ", username=" + username + ", password=" + password + ", adSoyad=" + adSoyad + '}';
+    }
 
 }

@@ -48,7 +48,7 @@ public class Il implements Serializable {
         this.kodu = kodu;
     }
 
-    @Column(name = "kod", length = 20)
+    @Column(name = "ad", length = 20)
     public String getAdi() {
         return adi;
     }

@@ -45,14 +45,15 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/ogrenci</property>
     <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">postgres</property>
     <property name="hibernate.hbm2dll.auto" >update</property>
     <property name="hibarnate.show_sql">true</property>
-    <property name="hibernate.format_sql">true</property>
+
     
-    <mapping class="com.vektorel.hibswingapp.entity.Bolum.class"></mapping>
-    <mapping class="com.vektorel.hibswingapp.entity.Il.class"></mapping>
-    <mapping class="com.vektorel.hibswingapp.entity.Kullanici.class"></mapping>
-    <mapping class="com.vektorel.hibswingapp.entity.Ogrenci.class"></mapping>
+    <mapping class="com.vektorel.hibswingapp.entity.Bolum"></mapping>
+    <mapping class="com.vektorel.hibswingapp.entity.Il"></mapping>
+    <mapping class="com.vektorel.hibswingapp.entity.Kullanici"></mapping>
+    <mapping class="com.vektorel.hibswingapp.entity.Ogrenci"></mapping>
     
   </session-factory>
 </hibernate-configuration>
