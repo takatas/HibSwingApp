@@ -21,11 +21,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kullan&#x131;c&#x131; Ekle"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuKullaniciEkleActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuKullaniciSil">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kullan&#x131;c&#x131; Sil"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuKullaniciSilActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuKullaniciGuncelle">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kullan&#x131;c&#x131; G&#xfc;ncelle"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuKullaniciGuncelleActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

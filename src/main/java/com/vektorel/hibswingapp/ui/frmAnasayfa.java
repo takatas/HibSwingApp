@@ -8,21 +8,24 @@ package com.vektorel.hibswingapp.ui;
 import com.vektorel.hibswingapp.entity.Kullanici;
 import com.vektorel.hibswingapp.service.KullaniciService;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author soner
  */
 public class frmAnasayfa extends javax.swing.JFrame {
+
     Kullanici kullanici;
-    
+    KullaniciService kullaniciService = new KullaniciService();
+
     /**
      * Creates new form frmAnasayfa
      */
-    
     public frmAnasayfa(Kullanici kullanici) {
         initComponents();
         this.kullanici = kullanici;
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -41,6 +44,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
         mnuKullaniciListesi = new javax.swing.JMenuItem();
         mnuKullaniciEkle = new javax.swing.JMenuItem();
         mnuKullaniciSil = new javax.swing.JMenuItem();
+        mnuKullaniciGuncelle = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -70,10 +74,28 @@ public class frmAnasayfa extends javax.swing.JFrame {
         jMenu1.add(mnuKullaniciListesi);
 
         mnuKullaniciEkle.setText("Kullanıcı Ekle");
+        mnuKullaniciEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuKullaniciEkleActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuKullaniciEkle);
 
         mnuKullaniciSil.setText("Kullanıcı Sil");
+        mnuKullaniciSil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuKullaniciSilActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuKullaniciSil);
+
+        mnuKullaniciGuncelle.setText("Kullanıcı Güncelle");
+        mnuKullaniciGuncelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuKullaniciGuncelleActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuKullaniciGuncelle);
 
         jMenuBar1.add(jMenu1);
 
@@ -103,10 +125,39 @@ public class frmAnasayfa extends javax.swing.JFrame {
         kullaniciTabloyuDoldur();
     }//GEN-LAST:event_mnuKullaniciListesiActionPerformed
 
+    private void mnuKullaniciEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuKullaniciEkleActionPerformed
+        frmKullaniciEkle ekle = new frmKullaniciEkle(this, true);
+        ekle.show();
+        kullaniciTabloyuDoldur();
+    }//GEN-LAST:event_mnuKullaniciEkleActionPerformed
+
+    private void mnuKullaniciSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuKullaniciSilActionPerformed
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            int silisinMi = (JOptionPane.showConfirmDialog(rootPane, "Silmek İstediğinize Emin misiniz?"));
+            if (silisinMi == 0) {
+                String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+                Kullanici kullanici = kullaniciService.getById(new Long(value));
+                kullaniciService.delete(kullanici);
+                kullaniciTabloyuDoldur();
+            }
+        }
+    }//GEN-LAST:event_mnuKullaniciSilActionPerformed
+
+    private void mnuKullaniciGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuKullaniciGuncelleActionPerformed
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+            Kullanici k = kullaniciService.getById(new Long(value));
+            frmKullaniciEkle guncelle = new frmKullaniciEkle(this, true, k);
+            guncelle.show();
+            kullaniciTabloyuDoldur();
+        }
+    }//GEN-LAST:event_mnuKullaniciGuncelleActionPerformed
+
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -115,13 +166,13 @@ public class frmAnasayfa extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem mnuKullaniciEkle;
+    private javax.swing.JMenuItem mnuKullaniciGuncelle;
     private javax.swing.JMenuItem mnuKullaniciListesi;
     private javax.swing.JMenuItem mnuKullaniciSil;
     private javax.swing.JTable tblAnasayfa;
     // End of variables declaration//GEN-END:variables
 
     private void kullaniciTabloyuDoldur() {
-        KullaniciService kullaniciService = new KullaniciService();
         List<Kullanici> kullanici = kullaniciService.getAll(null);
         String[][] data = new String[kullanici.size()][6];
         for (int i = 0; i < kullanici.size(); i++) {
@@ -138,6 +189,5 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 }
         ));
     }
-
 
 }

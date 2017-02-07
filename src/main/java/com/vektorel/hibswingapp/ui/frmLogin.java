@@ -22,6 +22,7 @@ public class frmLogin extends javax.swing.JDialog {
     public frmLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -47,6 +48,11 @@ public class frmLogin extends javax.swing.JDialog {
         lblSifre.setText("Şifre");
 
         btnIptal.setText("İptal");
+        btnIptal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIptalActionPerformed(evt);
+            }
+        });
 
         btnGiris.setText("Giriş");
         btnGiris.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +114,10 @@ public class frmLogin extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Kullanıcı veya Şifre Hatalı...");
         }
     }//GEN-LAST:event_btnGirisActionPerformed
+
+    private void btnIptalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIptalActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnIptalActionPerformed
 
     /**
      * @param args the command line arguments
