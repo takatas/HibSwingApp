@@ -7,7 +7,6 @@ package com.vektorel.hibswingapp.ui;
 
 import com.vektorel.hibswingapp.entity.Kullanici;
 import com.vektorel.hibswingapp.service.KullaniciService;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**

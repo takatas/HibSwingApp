@@ -23,7 +23,7 @@ public class BolumService implements IService<Bolum> {
     @Override
     public boolean save(Bolum entity) throws Exception {
         
-        if(entity.getBolumAdi() != null || entity.getBolumAdi().trim().equals(""))
+        if(entity.getBolumAdi() == null || entity.getBolumAdi().trim().equals(""))
             throw new Exception("Bölüm Adı Boş Olamaz.");
         
         Session session = HibernateUtil.getSessionFactory().openSession();

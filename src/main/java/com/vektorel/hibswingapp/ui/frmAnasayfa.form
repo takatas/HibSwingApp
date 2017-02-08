@@ -48,10 +48,35 @@
             <Property name="text" type="java.lang.String" value="&#xd6;&#x11f;renci &#x130;&#x15f;lemleri"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="mnuBolum">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tan&#x131;mlar"/>
           </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="jMenu4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mnuBolumEkle">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m Ekle"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuBolumEkleActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mnuBolumListele">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m Listesi"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuBolumListeleActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

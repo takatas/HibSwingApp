@@ -5,7 +5,9 @@
  */
 package com.vektorel.hibswingapp.ui;
 
+import com.vektorel.hibswingapp.entity.Bolum;
 import com.vektorel.hibswingapp.entity.Kullanici;
+import com.vektorel.hibswingapp.service.BolumService;
 import com.vektorel.hibswingapp.service.KullaniciService;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -18,6 +20,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
 
     Kullanici kullanici;
     KullaniciService kullaniciService = new KullaniciService();
+    BolumService bolumService = new BolumService();
 
     /**
      * Creates new form frmAnasayfa
@@ -26,6 +29,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
         initComponents();
         this.kullanici = kullanici;
         setLocationRelativeTo(null);
+        kullaniciTabloyuDoldur();
     }
 
     /**
@@ -46,7 +50,10 @@ public class frmAnasayfa extends javax.swing.JFrame {
         mnuKullaniciSil = new javax.swing.JMenuItem();
         mnuKullaniciGuncelle = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        mnuBolum = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        mnuBolumEkle = new javax.swing.JMenuItem();
+        mnuBolumListele = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,8 +109,29 @@ public class frmAnasayfa extends javax.swing.JFrame {
         jMenu2.setText("Öğrenci İşlemleri");
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Tanımlar");
-        jMenuBar1.add(jMenu3);
+        mnuBolum.setText("Tanımlar");
+
+        jMenu4.setText("Bölüm");
+
+        mnuBolumEkle.setText("Bölüm Ekle");
+        mnuBolumEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuBolumEkleActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mnuBolumEkle);
+
+        mnuBolumListele.setText("Bölüm Listesi");
+        mnuBolumListele.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuBolumListeleActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mnuBolumListele);
+
+        mnuBolum.add(jMenu4);
+
+        jMenuBar1.add(mnuBolum);
 
         setJMenuBar(jMenuBar1);
 
@@ -155,6 +183,17 @@ public class frmAnasayfa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnuKullaniciGuncelleActionPerformed
 
+    private void mnuBolumEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBolumEkleActionPerformed
+
+        frmBolumEkle bolumEkle = new frmBolumEkle(this, true);
+        bolumEkle.show();
+        bolumTabloyuDoldur();
+    }//GEN-LAST:event_mnuBolumEkleActionPerformed
+
+    private void mnuBolumListeleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBolumListeleActionPerformed
+        bolumTabloyuDoldur();
+    }//GEN-LAST:event_mnuBolumListeleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,9 +201,12 @@ public class frmAnasayfa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu mnuBolum;
+    private javax.swing.JMenuItem mnuBolumEkle;
+    private javax.swing.JMenuItem mnuBolumListele;
     private javax.swing.JMenuItem mnuKullaniciEkle;
     private javax.swing.JMenuItem mnuKullaniciGuncelle;
     private javax.swing.JMenuItem mnuKullaniciListesi;
@@ -186,6 +228,23 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 data,
                 new String[]{
                     "Id", "Ad Soyad", "Kullanıcı Adı"
+                }
+        ));
+    }
+        private void bolumTabloyuDoldur() {
+        List<Bolum> bolum = bolumService.getAll(null);
+        String[][] data = new String[bolum.size()][6];
+        for (int i = 0; i < bolum.size(); i++) {
+            data[i][0] = bolum.get(i).getId().toString();
+            data[i][1] = bolum.get(i).getKod();
+            data[i][2] = bolum.get(i).getBolumAdi();
+
+        }
+
+        tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
+                data,
+                new String[]{
+                    "Id", "Bolum Kodu", "Bolum Adı"
                 }
         ));
     }

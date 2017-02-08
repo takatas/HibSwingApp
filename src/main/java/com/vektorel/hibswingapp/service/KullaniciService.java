@@ -12,6 +12,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -69,12 +70,13 @@ public class KullaniciService implements IService<Kullanici>{
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Kullanici.class);
         
+        
         if(query != null){ // username veya adsoyada göre arama yapılıyor.
             
             criteria.add(Restrictions.or(Restrictions.ilike("username", query, MatchMode.ANYWHERE),
                 Restrictions.ilike("adsoyad", query, MatchMode.ANYWHERE)));
         }
-        
+        criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }
 

@@ -32,6 +32,7 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
         txtPass.setText(kullanici.getPassword());
         txtUsername.setText(kullanici.getUsername());
         txtUsername.setEditable(false); // edit alana müdahale engelleniyor.
+        lblId.setText(kullanici.getId().toString());
     }
 
     /**
@@ -51,6 +52,7 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
         txtNameSurname = new javax.swing.JTextField();
         btnKaydet = new javax.swing.JButton();
         btnIptal = new javax.swing.JButton();
+        lblKullaniciId = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -75,7 +77,7 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
             }
         });
 
-        lblId.setText("Id");
+        lblKullaniciId.setText("Kullanici ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +85,7 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
@@ -98,14 +100,19 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
                             .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNameSurname, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblKullaniciId, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(lblId)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblKullaniciId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -158,6 +165,7 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblKullaniciId;
     private javax.swing.JTextField txtNameSurname;
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtUsername;

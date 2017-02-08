@@ -39,7 +39,7 @@ public class Bolum implements Serializable {
         this.id = id;
     }
 
-    @Column (name = "kod", length = 30)
+    @Column (name = "kod", length = 30, unique = true)
     public String getKod() {
         return kod;
     }
