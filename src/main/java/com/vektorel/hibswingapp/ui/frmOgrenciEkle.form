@@ -48,28 +48,12 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="txtTCKimlikNo" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtOkulNo" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" alignment="1" pref="167" max="32767" attributes="0"/>
+                          <Component id="cmbBolum" alignment="1" pref="167" max="32767" attributes="0"/>
                           <Component id="txtOgrenciSoyadi" max="32767" attributes="0"/>
                           <Component id="txtOgrenciAdi" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblCinsiyet" max="32767" attributes="0"/>
-                                  <Component id="lblDogumTarihi" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      <Component id="cmbCinsiyet" min="-2" pref="116" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtDogumTarihi" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="chkAktif" min="-2" max="-2" attributes="0"/>
@@ -77,6 +61,17 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtBaslamaTarihi" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblCinsiyet" max="32767" attributes="0"/>
+                                  <Component id="lblDogumTarihi" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cmbCinsiyet" pref="117" max="32767" attributes="0"/>
+                                  <Component id="dchDogumTarihi" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -97,41 +92,50 @@
                   <Component id="cmbCinsiyet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblDogumTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDogumTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDogumTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtTCKimlikNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmbBolum" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBolum" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="chkAktif" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtOgrenciAdres" alignment="3" pref="59" max="32767" attributes="0"/>
+                          <Component id="lblAdres" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnOgrenciIptal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnOgrenciKaydet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="dchDogumTarihi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTCKimlikNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblBolum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="chkAktif" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtOgrenciAdres" alignment="3" pref="59" max="32767" attributes="0"/>
-                  <Component id="lblAdres" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnOgrenciIptal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnOgrenciKaydet" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,19 +160,6 @@
         <Property name="text" type="java.lang.String" value="Cinsiyet"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbCinsiyet">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCinsiyetActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblDogumTarihi">
       <Properties>
         <Property name="text" type="java.lang.String" value="Do&#x11f;um Tarihi"/>
@@ -186,15 +177,10 @@
         <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m&#xfc;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cmbBolum">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -221,8 +207,6 @@
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtBaslamaTarihi">
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtDogumTarihi">
-    </Component>
     <Component class="javax.swing.JButton" name="btnOgrenciKaydet">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kaydet"/>
@@ -246,6 +230,25 @@
     <Component class="javax.swing.JLabel" name="lblAdres">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adres"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbCinsiyet">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Erkek"/>
+            <StringItem index="1" value="Kad&#x131;n"/>
+            <StringItem index="2" value="Di&#x11f;er"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="dchDogumTarihi">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd.MM.yyyy"/>
       </Properties>
     </Component>
   </SubComponents>

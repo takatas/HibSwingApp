@@ -339,7 +339,8 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 }
         ));
     }
-        private void ogrenciTabloyuDoldur() {
+
+    private void ogrenciTabloyuDoldur() {
         List<Ogrenci> ogrenci = ogrenciService.getAll(null);
         String[][] data = new String[ogrenci.size()][9];
         for (int i = 0; i < ogrenci.size(); i++) {
@@ -358,7 +359,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
         tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
                 data,
                 new String[]{
-                    "Id", "Ad", "Soyad", "Kimlik No", "Adres","Okul No","Aktif"
+                    "Id", "Ad", "Soyad", "Kimlik No", "Adres", "Okul No", "Aktif"
                 }
         ));
     }

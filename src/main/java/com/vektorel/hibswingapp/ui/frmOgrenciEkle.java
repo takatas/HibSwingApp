@@ -5,10 +5,19 @@
  */
 package com.vektorel.hibswingapp.ui;
 
+import com.vektorel.hibswingapp.entity.Bolum;
 import com.vektorel.hibswingapp.entity.Ogrenci;
 import com.vektorel.hibswingapp.enums.Cinsiyet;
+import com.vektorel.hibswingapp.service.BolumService;
 import com.vektorel.hibswingapp.service.OgrenciService;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import javafx.scene.control.DatePicker;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +32,8 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        bolumComboDoldur();
+        
     }
 
     /**
@@ -39,23 +50,23 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         txtOgrenciAdi = new javax.swing.JTextField();
         txtOgrenciSoyadi = new javax.swing.JTextField();
         lblCinsiyet = new javax.swing.JLabel();
-        cmbCinsiyet = new javax.swing.JComboBox<>();
         lblDogumTarihi = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTCKimlikNo = new javax.swing.JTextField();
         lblBolum = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbBolum = new javax.swing.JComboBox<>();
         txtOkulNo = new javax.swing.JTextField();
         lblOkulNo = new javax.swing.JLabel();
         lblBaslamaTarihi = new javax.swing.JLabel();
         chkAktif = new javax.swing.JCheckBox();
         txtBaslamaTarihi = new javax.swing.JFormattedTextField();
-        txtDogumTarihi = new javax.swing.JFormattedTextField();
         btnOgrenciKaydet = new javax.swing.JButton();
         btnOgrenciIptal = new javax.swing.JButton();
         lblOgrenciId = new javax.swing.JLabel();
         txtOgrenciAdres = new javax.swing.JTextField();
         lblAdres = new javax.swing.JLabel();
+        cmbCinsiyet = new javax.swing.JComboBox<>();
+        dchDogumTarihi = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,19 +76,11 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
 
         lblCinsiyet.setText("Cinsiyet");
 
-        cmbCinsiyet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCinsiyetActionPerformed(evt);
-            }
-        });
-
         lblDogumTarihi.setText("Doğum Tarihi");
 
         jLabel2.setText("TC Kimlik No");
 
         lblBolum.setText("Bölümü");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblOkulNo.setText("Okul No");
 
@@ -101,6 +104,10 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         });
 
         lblAdres.setText("Adres");
+
+        cmbCinsiyet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erkek", "Kadın", "Diğer" }));
+
+        dchDogumTarihi.setDateFormatString("dd.MM.yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,28 +135,25 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtTCKimlikNo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtOkulNo)
-                            .addComponent(jComboBox1, 0, 167, Short.MAX_VALUE)
+                            .addComponent(cmbBolum, 0, 167, Short.MAX_VALUE)
                             .addComponent(txtOgrenciSoyadi)
                             .addComponent(txtOgrenciAdi))
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCinsiyet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addComponent(cmbCinsiyet, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDogumTarihi))))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(chkAktif)
                                     .addComponent(lblBaslamaTarihi))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBaslamaTarihi)))))
+                                .addComponent(txtBaslamaTarihi))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblCinsiyet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbCinsiyet, 0, 117, Short.MAX_VALUE)
+                                    .addComponent(dchDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -163,35 +167,40 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
                     .addComponent(lblCinsiyet)
                     .addComponent(cmbCinsiyet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOgrenciSoyadi)
-                    .addComponent(txtOgrenciSoyadi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDogumTarihi)
-                    .addComponent(txtDogumTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTCKimlikNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBolum)
-                    .addComponent(lblBaslamaTarihi)
-                    .addComponent(txtBaslamaTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOkulNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOkulNo)
-                    .addComponent(chkAktif))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOgrenciAdres, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                    .addComponent(lblAdres))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOgrenciIptal)
-                    .addComponent(btnOgrenciKaydet))
-                .addGap(31, 31, 31))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblOgrenciSoyadi)
+                            .addComponent(txtOgrenciSoyadi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDogumTarihi))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTCKimlikNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbBolum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblBolum)
+                            .addComponent(lblBaslamaTarihi)
+                            .addComponent(txtBaslamaTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkAktif)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtOkulNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblOkulNo)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtOgrenciAdres, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                            .addComponent(lblAdres))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnOgrenciIptal)
+                            .addComponent(btnOgrenciKaydet))
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(dchDogumTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -201,23 +210,27 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnOgrenciIptalActionPerformed
 
-    private void cmbCinsiyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCinsiyetActionPerformed
-
-//        Cinsiyet cinsiyet;
-//        cinsiyet.get(value)
-
-    }//GEN-LAST:event_cmbCinsiyetActionPerformed
-
     private void btnOgrenciKaydetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrenciKaydetActionPerformed
 
+
+        
         try {
+
             OgrenciService ogrenciService = new OgrenciService();
+//            BolumService bolumService = new BolumService();
+//            Bolum bolum = bolumService.getById(cmbBolum.getSelectedItem().toString());
+            //bolum.getId()
+            
+            int i = cmbCinsiyet.getSelectedIndex();
+            //Date str = ((JTextField)dchDogumTarihi.getDateEditor().getUiComponent().get);
+            
+
             if (lblOgrenciId.getText().trim().equals("")) {
 
-                ogrenciService.save(new Ogrenci(null, txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText()));
+                ogrenciService.save(new Ogrenci(null, txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText(), cmbCinsiyet.getSelectedIndex()));
             } else {
 
-                ogrenciService.update(new Ogrenci(new Long(lblOgrenciId.getText()), txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText()));
+                ogrenciService.update(new Ogrenci(new Long(lblOgrenciId.getText()), txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText(), cmbCinsiyet.getSelectedIndex()));
             }
             this.dispose();
         } catch (Exception e) {
@@ -233,8 +246,9 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
     private javax.swing.JButton btnOgrenciIptal;
     private javax.swing.JButton btnOgrenciKaydet;
     private javax.swing.JCheckBox chkAktif;
+    private javax.swing.JComboBox<String> cmbBolum;
     private javax.swing.JComboBox<String> cmbCinsiyet;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser dchDogumTarihi;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAdres;
     private javax.swing.JLabel lblBaslamaTarihi;
@@ -246,11 +260,24 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
     private javax.swing.JLabel lblOgrenciSoyadi;
     private javax.swing.JLabel lblOkulNo;
     private javax.swing.JFormattedTextField txtBaslamaTarihi;
-    private javax.swing.JFormattedTextField txtDogumTarihi;
     private javax.swing.JTextField txtOgrenciAdi;
     private javax.swing.JTextField txtOgrenciAdres;
     private javax.swing.JTextField txtOgrenciSoyadi;
     private javax.swing.JTextField txtOkulNo;
     private javax.swing.JTextField txtTCKimlikNo;
     // End of variables declaration//GEN-END:variables
+
+    private void bolumComboDoldur() {
+
+        BolumService bolumService = new BolumService();
+        List<Bolum> bolum = bolumService.getAll(null);
+        String[] data = new String[bolum.size()];
+        for (int i = 0; i < bolum.size(); i++) {
+            data[i] = bolum.get(i).getBolumAdi();
+            cmbBolum.addItem(bolum.get(i).getBolumAdi());
+            
+        }
+    }
+    
+
 }

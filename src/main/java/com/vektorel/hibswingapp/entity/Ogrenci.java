@@ -46,7 +46,7 @@ public class Ogrenci implements Serializable {
         
     }
     
-    public Ogrenci(Long id, String ad, String soyad, Long tcKimlikNo, String okulNo, String adres) {
+    public Ogrenci(Long id, String ad, String soyad, Long tcKimlikNo, String okulNo, String adres, Integer cinsiyet) {
         
         this.id = id;
         this.ad = ad;
@@ -54,6 +54,8 @@ public class Ogrenci implements Serializable {
         this.tcKimlikNo = tcKimlikNo;
         this.okulNo = okulNo;
         this.adres = adres;
+        //this.bolum = bolumId;
+        this.cinsiyet = cinsiyet;
         
     }
 
