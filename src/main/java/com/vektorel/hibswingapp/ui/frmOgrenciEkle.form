@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="lblOgrenciSoyadi" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBolum" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblOkulNo" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblOgrenciAdi" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblAdres" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="txtOgrenciAdres" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnOgrenciIptal" min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="btnOgrenciKaydet" min="-2" pref="81" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblOgrenciId" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtTCKimlikNo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtOkulNo" max="32767" attributes="0"/>
+                          <Component id="jComboBox1" alignment="1" pref="167" max="32767" attributes="0"/>
+                          <Component id="txtOgrenciSoyadi" max="32767" attributes="0"/>
+                          <Component id="txtOgrenciAdi" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblCinsiyet" max="32767" attributes="0"/>
+                                  <Component id="lblDogumTarihi" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                      <Component id="cmbCinsiyet" min="-2" pref="116" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtDogumTarihi" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="chkAktif" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBaslamaTarihi" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtBaslamaTarihi" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="lblOgrenciId" min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblOgrenciAdi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtOgrenciAdi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCinsiyet" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbCinsiyet" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDogumTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDogumTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtTCKimlikNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBolum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chkAktif" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtOgrenciAdres" alignment="3" pref="59" max="32767" attributes="0"/>
+                  <Component id="lblAdres" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnOgrenciIptal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnOgrenciKaydet" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblOgrenciAdi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xd6;&#x11f;renci Ad&#x131;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblOgrenciSoyadi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xd6;&#x11f;renci Soyad&#x131;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtOgrenciAdi">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtOgrenciSoyadi">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCinsiyet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cinsiyet"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbCinsiyet">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCinsiyetActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDogumTarihi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Do&#x11f;um Tarihi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TC Kimlik No"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTCKimlikNo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBolum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m&#xfc;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtOkulNo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblOkulNo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Okul No"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBaslamaTarihi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ba&#x15f;lama Tarihi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chkAktif">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aktif"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtBaslamaTarihi">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtDogumTarihi">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnOgrenciKaydet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kaydet"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOgrenciKaydetActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnOgrenciIptal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x130;ptal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOgrenciIptalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblOgrenciId">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtOgrenciAdres">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdres">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adres"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

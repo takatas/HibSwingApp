@@ -26,7 +26,7 @@ public class OgrenciService implements IService<Ogrenci> {
         if(entity == null || entity.getBolum() != null)
             throw new Exception("Öğrencinin Bölümü Boş Olamaz.");
         
-        if(entity.getTcKimlikNo() != null)
+        if(entity.getTcKimlikNo() == null)
             throw new Exception("Tc Kimlik No Boş Olamaz.");
         
         Session session = HibernateUtil.getSessionFactory().openSession();

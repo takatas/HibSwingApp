@@ -8,9 +8,11 @@ package com.vektorel.hibswingapp.ui;
 import com.vektorel.hibswingapp.entity.Bolum;
 import com.vektorel.hibswingapp.entity.Il;
 import com.vektorel.hibswingapp.entity.Kullanici;
+import com.vektorel.hibswingapp.entity.Ogrenci;
 import com.vektorel.hibswingapp.service.BolumService;
 import com.vektorel.hibswingapp.service.IlService;
 import com.vektorel.hibswingapp.service.KullaniciService;
+import com.vektorel.hibswingapp.service.OgrenciService;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -24,6 +26,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
     KullaniciService kullaniciService = new KullaniciService();
     BolumService bolumService = new BolumService();
     IlService ilService = new IlService();
+    OgrenciService ogrenciService = new OgrenciService();
 
     /**
      * Creates new form frmAnasayfa
@@ -53,11 +56,15 @@ public class frmAnasayfa extends javax.swing.JFrame {
         mnuKullaniciSil = new javax.swing.JMenuItem();
         mnuKullaniciGuncelle = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnuOgrenciEkle = new javax.swing.JMenuItem();
+        mnuOgrenciListele = new javax.swing.JMenuItem();
         mnuBolum = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         mnuBolumEkle = new javax.swing.JMenuItem();
         mnuBolumListele = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         mnuIlEkle = new javax.swing.JMenuItem();
+        mnuIlListesi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,6 +118,23 @@ public class frmAnasayfa extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Öğrenci İşlemleri");
+
+        mnuOgrenciEkle.setText("Öğrenci Ekle");
+        mnuOgrenciEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuOgrenciEkleActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuOgrenciEkle);
+
+        mnuOgrenciListele.setText("Öğrenci Listele");
+        mnuOgrenciListele.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuOgrenciListeleActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuOgrenciListele);
+
         jMenuBar1.add(jMenu2);
 
         mnuBolum.setText("Tanımlar");
@@ -135,13 +159,25 @@ public class frmAnasayfa extends javax.swing.JFrame {
 
         mnuBolum.add(jMenu4);
 
+        jMenu3.setText("İl");
+
         mnuIlEkle.setText("İl Tanımla");
         mnuIlEkle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuIlEkleActionPerformed(evt);
             }
         });
-        mnuBolum.add(mnuIlEkle);
+        jMenu3.add(mnuIlEkle);
+
+        mnuIlListesi.setText("İl Listesi");
+        mnuIlListesi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIlListesiActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnuIlListesi);
+
+        mnuBolum.add(jMenu3);
 
         jMenuBar1.add(mnuBolum);
 
@@ -212,6 +248,20 @@ public class frmAnasayfa extends javax.swing.JFrame {
         IlTabloyuDoldur();
     }//GEN-LAST:event_mnuIlEkleActionPerformed
 
+    private void mnuIlListesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIlListesiActionPerformed
+        IlTabloyuDoldur();
+    }//GEN-LAST:event_mnuIlListesiActionPerformed
+
+    private void mnuOgrenciEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOgrenciEkleActionPerformed
+        frmOgrenciEkle ogrenciEkle = new frmOgrenciEkle(this, true);
+        ogrenciEkle.show();
+        ogrenciTabloyuDoldur();
+    }//GEN-LAST:event_mnuOgrenciEkleActionPerformed
+
+    private void mnuOgrenciListeleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOgrenciListeleActionPerformed
+        ogrenciTabloyuDoldur();
+    }//GEN-LAST:event_mnuOgrenciListeleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -219,6 +269,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -226,10 +277,13 @@ public class frmAnasayfa extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuBolumEkle;
     private javax.swing.JMenuItem mnuBolumListele;
     private javax.swing.JMenuItem mnuIlEkle;
+    private javax.swing.JMenuItem mnuIlListesi;
     private javax.swing.JMenuItem mnuKullaniciEkle;
     private javax.swing.JMenuItem mnuKullaniciGuncelle;
     private javax.swing.JMenuItem mnuKullaniciListesi;
     private javax.swing.JMenuItem mnuKullaniciSil;
+    private javax.swing.JMenuItem mnuOgrenciEkle;
+    private javax.swing.JMenuItem mnuOgrenciListele;
     private javax.swing.JTable tblAnasayfa;
     // End of variables declaration//GEN-END:variables
 
@@ -268,19 +322,43 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 }
         ));
     }
+
     private void IlTabloyuDoldur() {
         //tablo doldur
         List<Il> il = ilService.getAll(null);
         String[][] data = new String[il.size()][6];
         for (int i = 0; i < il.size(); i++) {
-            data[i][0] = il.get(i).getId().toString();
-            data[i][1] = il.get(i).getKodu();
-            data[i][2] = il.get(i).getAdi();
+            //data[i][0] = il.get(i).getId().toString();
+            data[i][0] = il.get(i).getKodu();
+            data[i][1] = il.get(i).getAdi();
         }
         tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
                 data,
                 new String[]{
-                    "Id", "İl Kodu", "İl Adı"
+                    "İl Kodu", "İl Adı"
+                }
+        ));
+    }
+        private void ogrenciTabloyuDoldur() {
+        List<Ogrenci> ogrenci = ogrenciService.getAll(null);
+        String[][] data = new String[ogrenci.size()][9];
+        for (int i = 0; i < ogrenci.size(); i++) {
+            data[i][0] = ogrenci.get(i).getId().toString();
+            data[i][1] = ogrenci.get(i).getAd();
+            data[i][2] = ogrenci.get(i).getSoyad();
+            data[i][3] = ogrenci.get(i).getTcKimlikNo().toString();
+            data[i][4] = ogrenci.get(i).getAdres();
+            data[i][5] = ogrenci.get(i).getOkulNo();
+//            data[i][6] = ogrenci.get(i).getOkulaBaslamaTarihi().toString();
+//            data[i][7] = ogrenci.get(i).getDogumTarihi().toString();
+            //data[i][8] = ogrenci.get(i).getAktif().toString();
+
+        }
+
+        tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
+                data,
+                new String[]{
+                    "Id", "Ad", "Soyad", "Kimlik No", "Adres","Okul No","Aktif"
                 }
         ));
     }

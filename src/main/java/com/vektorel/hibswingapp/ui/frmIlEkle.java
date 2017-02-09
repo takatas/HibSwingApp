@@ -22,6 +22,8 @@ public class frmIlEkle extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        lblIl.setVisible(false);
+        lblIlId.setVisible(false);
     }
 
     /**
@@ -39,6 +41,8 @@ public class frmIlEkle extends javax.swing.JDialog {
         txtIlAdi = new javax.swing.JTextField();
         btnIlIptal = new javax.swing.JButton();
         btnIlKaydet = new javax.swing.JButton();
+        lblIl = new javax.swing.JLabel();
+        lblIlId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,6 +64,8 @@ public class frmIlEkle extends javax.swing.JDialog {
             }
         });
 
+        lblIl.setText("İl Id");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,21 +74,31 @@ public class frmIlEkle extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblIlKodu)
-                    .addComponent(lblIlAdi))
+                    .addComponent(lblIlAdi)
+                    .addComponent(lblIl))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtIlAdi)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(btnIlIptal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(btnIlKaydet))
-                    .addComponent(txtIlKodu))
-                .addGap(18, 18, 18))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtIlAdi)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnIlIptal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                                .addComponent(btnIlKaydet))
+                            .addComponent(txtIlKodu))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblIlId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblIl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIlId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIlKodu)
                     .addComponent(txtIlKodu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -108,8 +124,13 @@ public class frmIlEkle extends javax.swing.JDialog {
 
         try {
             IlService ilService = new IlService();
-            ilService.save(new Il(txtIlKodu.getText(), txtIlAdi.getText()));
-            
+            if (lblIlId.getText().trim().equals("")) {
+
+                ilService.save(new Il(null, txtIlKodu.getText(), txtIlAdi.getText()));
+            } else {
+
+                ilService.update(new Il(new Long(lblIlId.getText()), txtIlKodu.getText(), txtIlAdi.getText()));
+            }
             this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -124,7 +145,9 @@ public class frmIlEkle extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIlIptal;
     private javax.swing.JButton btnIlKaydet;
+    private javax.swing.JLabel lblIl;
     private javax.swing.JLabel lblIlAdi;
+    private javax.swing.JLabel lblIlId;
     private javax.swing.JLabel lblIlKodu;
     private javax.swing.JTextField txtIlAdi;
     private javax.swing.JTextField txtIlKodu;

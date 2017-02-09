@@ -78,8 +78,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtKullaniciAdi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="takatas"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtSifre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1q"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnIptal">
       <Properties>

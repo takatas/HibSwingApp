@@ -46,6 +46,10 @@ public class frmLogin extends javax.swing.JDialog {
 
         lblSifre.setText("Şifre");
 
+        txtKullaniciAdi.setText("takatas");
+
+        txtSifre.setText("1q");
+
         btnIptal.setText("İptal");
         btnIptal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

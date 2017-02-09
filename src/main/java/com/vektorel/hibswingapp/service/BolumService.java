@@ -26,6 +26,9 @@ public class BolumService implements IService<Bolum> {
         if(entity.getBolumAdi() == null || entity.getBolumAdi().trim().equals(""))
             throw new Exception("Bölüm Adı Boş Olamaz.");
         
+        if(entity.getKod()== null || entity.getKod().trim().equals(""))
+            throw new Exception("Bölüm Kodu Boş Olamaz.");
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(entity);

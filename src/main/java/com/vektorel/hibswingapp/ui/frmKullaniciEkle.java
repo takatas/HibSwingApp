@@ -139,9 +139,9 @@ public class frmKullaniciEkle extends javax.swing.JDialog {
         try {
             KullaniciService ks = new KullaniciService();
             if (lblId.getText().trim().equals("")) {
-                ks.save(new Kullanici(null,txtUsername.getText(), txtPass.getText(), txtNameSurname.getText()));
+                ks.save(new Kullanici(null, txtUsername.getText(), txtPass.getText(), txtNameSurname.getText()));
             } else {
-                ks.update(new Kullanici(new Long(lblId.getText()),txtUsername.getText(), txtPass.getText(), txtNameSurname.getText()));
+                ks.update(new Kullanici(new Long(lblId.getText()), txtUsername.getText(), txtPass.getText(), txtNameSurname.getText()));
             }
             this.dispose();
         } catch (Exception e) {

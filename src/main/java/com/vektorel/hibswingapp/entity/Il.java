@@ -18,25 +18,28 @@ import javax.persistence.Table;
  *
  * @author soner
  */
-
 @Entity
-@Table (name = "il")
+@Table(name = "il")
 public class Il implements Serializable {
-    
+
     private Long id;
     private String kodu;
     private String adi;
 
-    public Il(String kodu, String adi) {
-        
+    public Il() {
+    }
+
+    public Il(Long id, String kodu, String adi) {
+
+        this.id = id;
         this.kodu = kodu;
         this.adi = adi;
     }
 
     @Id
     @SequenceGenerator(name = "seq_il", allocationSize = 1, sequenceName = "seq_il")
-    @GeneratedValue (generator = "seq_il", strategy = GenerationType.SEQUENCE)
-    @Column (name = "id")
+    @GeneratedValue(generator = "seq_il", strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -45,7 +48,7 @@ public class Il implements Serializable {
         this.id = id;
     }
 
-    @Column(name= "kod", length = 10)
+    @Column(name = "kod", length = 10)
     public String getKodu() {
         return kodu;
     }
@@ -62,7 +65,5 @@ public class Il implements Serializable {
     public void setAdi(String adi) {
         this.adi = adi;
     }
-    
-    
-    
+
 }

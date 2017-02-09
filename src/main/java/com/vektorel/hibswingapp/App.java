@@ -33,8 +33,8 @@ public class App {
         login.setLocationRelativeTo(null);
         login.show();
 
-        System.out.println("Kullanıcı Kayıt Edildi.");
-        //33. dakika
+        //System.out.println("Kullanıcı Kayıt Edildi.");
+        
     }
 
 }

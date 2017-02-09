@@ -19,24 +19,25 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author soner
  */
-public class KullaniciService implements IService<Kullanici>{
+public class KullaniciService implements IService<Kullanici> {
 
     @Override
     public boolean save(Kullanici entity) throws Exception {
-        
-        if(entity.getUsername() == null || entity.getUsername().trim().equals(""))
+
+        if (entity.getUsername() == null || entity.getUsername().trim().equals("")) {
             throw new Exception("Kullanıcı Adı Boş Olamaz...");
-        
-        if(entity.getPassword() == null || entity.getPassword().trim().equals(""))
+        }
+
+        if (entity.getPassword() == null || entity.getPassword().trim().equals("")) {
             throw new Exception("Şifre Boş Olamaz...");
-        
+        }
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(entity);
         transaction.commit();
         session.close();
-        
-        
+
         return true;
     }
 
@@ -48,7 +49,7 @@ public class KullaniciService implements IService<Kullanici>{
         session.update(entity);
         transaction.commit();
         session.close();
-        
+
         return true;
     }
 
@@ -60,21 +61,20 @@ public class KullaniciService implements IService<Kullanici>{
         session.delete(entity);
         transaction.commit();
         session.close();
-        
+
         return true;
     }
 
     @Override
     public List<Kullanici> getAll(String query) {
-        
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Kullanici.class);
-        
-        
-        if(query != null){ // username veya adsoyada göre arama yapılıyor.
-            
+
+        if (query != null) { // username veya adsoyada göre arama yapılıyor.
+
             criteria.add(Restrictions.or(Restrictions.ilike("username", query, MatchMode.ANYWHERE),
-                Restrictions.ilike("adsoyad", query, MatchMode.ANYWHERE)));
+                    Restrictions.ilike("adsoyad", query, MatchMode.ANYWHERE)));
         }
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
@@ -85,20 +85,20 @@ public class KullaniciService implements IService<Kullanici>{
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Kullanici.class);
         criteria.add(Restrictions.eq("id", id));
-        
+
         return (Kullanici) criteria.uniqueResult();
-        
+
     }
-    
-    public Kullanici getUsernameAndPassword(String username, String pass){
-        
+
+    public Kullanici getUsernameAndPassword(String username, String pass) {
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Kullanici.class);
         criteria.add(Restrictions.eq("username", username));
         criteria.add(Restrictions.eq("password", pass));
-        
-       return (Kullanici)criteria.uniqueResult();
-                
+
+        return (Kullanici) criteria.uniqueResult();
+
     }
-    
+
 }

@@ -41,6 +41,22 @@ public class Ogrenci implements Serializable {
     private Long tcKimlikNo;
     private Bolum bolum;
 
+    
+    public Ogrenci(){
+        
+    }
+    
+    public Ogrenci(Long id, String ad, String soyad, Long tcKimlikNo, String okulNo, String adres) {
+        
+        this.id = id;
+        this.ad = ad;
+        this.soyad = soyad;
+        this.tcKimlikNo = tcKimlikNo;
+        this.okulNo = okulNo;
+        this.adres = adres;
+        
+    }
+
     @Id
     @SequenceGenerator(name = "seq_ogrenci", allocationSize = 1, sequenceName = "seq_ogrenci")
     @GeneratedValue(generator = "seq_ogrenci", strategy = GenerationType.SEQUENCE)
