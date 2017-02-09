@@ -27,6 +27,12 @@ public class Il implements Serializable {
     private String kodu;
     private String adi;
 
+    public Il(String kodu, String adi) {
+        
+        this.kodu = kodu;
+        this.adi = adi;
+    }
+
     @Id
     @SequenceGenerator(name = "seq_il", allocationSize = 1, sequenceName = "seq_il")
     @GeneratedValue (generator = "seq_il", strategy = GenerationType.SEQUENCE)

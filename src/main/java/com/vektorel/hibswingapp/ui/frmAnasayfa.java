@@ -6,8 +6,10 @@
 package com.vektorel.hibswingapp.ui;
 
 import com.vektorel.hibswingapp.entity.Bolum;
+import com.vektorel.hibswingapp.entity.Il;
 import com.vektorel.hibswingapp.entity.Kullanici;
 import com.vektorel.hibswingapp.service.BolumService;
+import com.vektorel.hibswingapp.service.IlService;
 import com.vektorel.hibswingapp.service.KullaniciService;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -21,6 +23,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
     Kullanici kullanici;
     KullaniciService kullaniciService = new KullaniciService();
     BolumService bolumService = new BolumService();
+    IlService ilService = new IlService();
 
     /**
      * Creates new form frmAnasayfa
@@ -54,6 +57,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         mnuBolumEkle = new javax.swing.JMenuItem();
         mnuBolumListele = new javax.swing.JMenuItem();
+        mnuIlEkle = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,7 +117,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
 
         jMenu4.setText("Bölüm");
 
-        mnuBolumEkle.setText("Bölüm Ekle");
+        mnuBolumEkle.setText("Bölüm Tanımla");
         mnuBolumEkle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuBolumEkleActionPerformed(evt);
@@ -130,6 +134,14 @@ public class frmAnasayfa extends javax.swing.JFrame {
         jMenu4.add(mnuBolumListele);
 
         mnuBolum.add(jMenu4);
+
+        mnuIlEkle.setText("İl Tanımla");
+        mnuIlEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIlEkleActionPerformed(evt);
+            }
+        });
+        mnuBolum.add(mnuIlEkle);
 
         jMenuBar1.add(mnuBolum);
 
@@ -194,6 +206,12 @@ public class frmAnasayfa extends javax.swing.JFrame {
         bolumTabloyuDoldur();
     }//GEN-LAST:event_mnuBolumListeleActionPerformed
 
+    private void mnuIlEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIlEkleActionPerformed
+        frmIlEkle ilEkle = new frmIlEkle(this, true);
+        ilEkle.show();
+        IlTabloyuDoldur();
+    }//GEN-LAST:event_mnuIlEkleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +225,7 @@ public class frmAnasayfa extends javax.swing.JFrame {
     private javax.swing.JMenu mnuBolum;
     private javax.swing.JMenuItem mnuBolumEkle;
     private javax.swing.JMenuItem mnuBolumListele;
+    private javax.swing.JMenuItem mnuIlEkle;
     private javax.swing.JMenuItem mnuKullaniciEkle;
     private javax.swing.JMenuItem mnuKullaniciGuncelle;
     private javax.swing.JMenuItem mnuKullaniciListesi;
@@ -231,7 +250,8 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 }
         ));
     }
-        private void bolumTabloyuDoldur() {
+
+    private void bolumTabloyuDoldur() {
         List<Bolum> bolum = bolumService.getAll(null);
         String[][] data = new String[bolum.size()][6];
         for (int i = 0; i < bolum.size(); i++) {
@@ -245,6 +265,24 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 data,
                 new String[]{
                     "Id", "Bolum Kodu", "Bolum Adı"
+                }
+        ));
+    }
+
+    private void IlTabloyuDoldur() {
+        List<Il> il = ilService.getAll(null);
+        String[][] data = new String[il.size()][6];
+        for (int i = 0; i < il.size(); i++) {
+            data[i][0] = il.get(i).getId().toString();
+            data[i][1] = il.get(i).getKodu();
+            data[i][2] = il.get(i).getAdi();
+
+        }
+
+        tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
+                data,
+                new String[]{
+                    "Id", "İl Kodu", "İl Adı"
                 }
         ));
     }

@@ -60,7 +60,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mnuBolumEkle">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m Ekle"/>
+                    <Property name="text" type="java.lang.String" value="B&#xf6;l&#xfc;m Tan&#x131;mla"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuBolumEkleActionPerformed"/>
@@ -76,6 +76,14 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuIlEkle">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x130;l Tan&#x131;mla"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuIlEkleActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

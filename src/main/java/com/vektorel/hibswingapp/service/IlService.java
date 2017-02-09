@@ -11,6 +11,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -22,7 +23,7 @@ public class IlService implements IService<Il> {
     @Override
     public boolean save(Il entity) throws Exception {
 
-        if (entity.getAdi()!= null || entity.getAdi().trim().equals("")) {
+        if (entity.getAdi()== null || entity.getAdi().trim().equals("")) {
             throw new Exception("İl Adı Boş Olamaz.");
         }
 
@@ -61,6 +62,7 @@ public class IlService implements IService<Il> {
     public List<Il> getAll(String query) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Il.class);
+        criteria.addOrder(Order.asc("id"));
         return criteria.list();
 
     }

@@ -21,6 +21,7 @@ public class frmBolumEkle extends javax.swing.JDialog {
     public frmBolumEkle(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         
     }
 
