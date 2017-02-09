@@ -268,17 +268,15 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 }
         ));
     }
-
     private void IlTabloyuDoldur() {
+        //tablo doldur
         List<Il> il = ilService.getAll(null);
         String[][] data = new String[il.size()][6];
         for (int i = 0; i < il.size(); i++) {
             data[i][0] = il.get(i).getId().toString();
             data[i][1] = il.get(i).getKodu();
             data[i][2] = il.get(i).getAdi();
-
         }
-
         tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
                 data,
                 new String[]{
