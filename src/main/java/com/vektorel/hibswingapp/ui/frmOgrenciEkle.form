@@ -39,7 +39,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnOgrenciIptal" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                       <Component id="btnOgrenciKaydet" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <Component id="lblOgrenciId" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
@@ -128,11 +128,12 @@
                   <Component id="txtOgrenciAdres" alignment="3" pref="59" max="32767" attributes="0"/>
                   <Component id="lblAdres" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnOgrenciIptal" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnOgrenciKaydet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
