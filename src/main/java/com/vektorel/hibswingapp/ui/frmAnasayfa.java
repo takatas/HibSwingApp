@@ -13,6 +13,7 @@ import com.vektorel.hibswingapp.service.BolumService;
 import com.vektorel.hibswingapp.service.IlService;
 import com.vektorel.hibswingapp.service.KullaniciService;
 import com.vektorel.hibswingapp.service.OgrenciService;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -47,6 +48,9 @@ public class frmAnasayfa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu = new javax.swing.JPopupMenu();
+        jPopUpGuncelle = new javax.swing.JMenuItem();
+        jPopUpSil = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnasayfa = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -66,6 +70,23 @@ public class frmAnasayfa extends javax.swing.JFrame {
         mnuIlEkle = new javax.swing.JMenuItem();
         mnuIlListesi = new javax.swing.JMenuItem();
 
+        jPopUpGuncelle.setText("Güncelle");
+        jPopUpGuncelle.setToolTipText("");
+        jPopUpGuncelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPopUpGuncelleActionPerformed(evt);
+            }
+        });
+        jPopupMenu.add(jPopUpGuncelle);
+
+        jPopUpSil.setText("Sil");
+        jPopUpSil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPopUpSilActionPerformed(evt);
+            }
+        });
+        jPopupMenu.add(jPopUpSil);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
@@ -79,6 +100,11 @@ public class frmAnasayfa extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblAnasayfa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblAnasayfaMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAnasayfa);
 
         jMenu1.setText("Kullanıcı İşlemleri");
@@ -208,27 +234,11 @@ public class frmAnasayfa extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuKullaniciEkleActionPerformed
 
     private void mnuKullaniciSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuKullaniciSilActionPerformed
-        int seciliKayit = tblAnasayfa.getSelectedRow();
-        if (seciliKayit > -1) {
-            int silisinMi = (JOptionPane.showConfirmDialog(rootPane, "Silmek İstediğinize Emin misiniz?"));
-            if (silisinMi == 0) {
-                String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
-                Kullanici kullanici = kullaniciService.getById(new Long(value));
-                kullaniciService.delete(kullanici);
-                kullaniciTabloyuDoldur();
-            }
-        }
+        kullaniciSil();
     }//GEN-LAST:event_mnuKullaniciSilActionPerformed
 
     private void mnuKullaniciGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuKullaniciGuncelleActionPerformed
-        int seciliKayit = tblAnasayfa.getSelectedRow();
-        if (seciliKayit > -1) {
-            String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
-            Kullanici k = kullaniciService.getById(new Long(value));
-            frmKullaniciEkle guncelle = new frmKullaniciEkle(this, true, k);
-            guncelle.show();
-            kullaniciTabloyuDoldur();
-        }
+        kullaniciGuncelle();
     }//GEN-LAST:event_mnuKullaniciGuncelleActionPerformed
 
     private void mnuBolumEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBolumEkleActionPerformed
@@ -262,16 +272,32 @@ public class frmAnasayfa extends javax.swing.JFrame {
         ogrenciTabloyuDoldur();
     }//GEN-LAST:event_mnuOgrenciListeleActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void tblAnasayfaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAnasayfaMouseReleased
+        if (evt.isPopupTrigger()) {
+            jPopupMenu.show(this, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_tblAnasayfaMouseReleased
 
+    private void jPopUpGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPopUpGuncelleActionPerformed
+        kullaniciGuncelle();
+    }//GEN-LAST:event_jPopUpGuncelleActionPerformed
+
+    private void jPopUpSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPopUpSilActionPerformed
+        kullaniciSil();
+    }//GEN-LAST:event_jPopUpSilActionPerformed
+
+    /**
+         * @param args the command line arguments
+         */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jPopUpGuncelle;
+    private javax.swing.JMenuItem jPopUpSil;
+    private javax.swing.JPopupMenu jPopupMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mnuBolum;
     private javax.swing.JMenuItem mnuBolumEkle;
@@ -342,26 +368,73 @@ public class frmAnasayfa extends javax.swing.JFrame {
 
     private void ogrenciTabloyuDoldur() {
         List<Ogrenci> ogrenci = ogrenciService.getAll(null);
-        String[][] data = new String[ogrenci.size()][9];
+        String[][] data = new String[ogrenci.size()][11];
         for (int i = 0; i < ogrenci.size(); i++) {
             data[i][0] = ogrenci.get(i).getId().toString();
             data[i][1] = ogrenci.get(i).getAd();
             data[i][2] = ogrenci.get(i).getSoyad();
             data[i][3] = ogrenci.get(i).getTcKimlikNo().toString();
-            data[i][4] = ogrenci.get(i).getAdres();
-            data[i][5] = ogrenci.get(i).getOkulNo();
-//            data[i][6] = ogrenci.get(i).getOkulaBaslamaTarihi().toString();
-//            data[i][7] = ogrenci.get(i).getDogumTarihi().toString();
-            //data[i][8] = ogrenci.get(i).getAktif().toString();
+            data[i][4] = ogrenci.get(i).getBolum() != null ? ogrenci.get(i).getBolum().getBolumAdi() : "";
+            data[i][5] = ogrenci.get(i).getAdres();
+            data[i][6] = ogrenci.get(i).getOkulNo();
+            //data[i][7] = ogrenci.get(i).getDogumTarihi() != null ? ogrenci.get(i).getDogumTarihi().toString() : "";
 
+            if (ogrenci.get(i).getDogumTarihi() != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+                data[i][7] = sdf.format(ogrenci.get(i).getDogumTarihi());
+            }
+            if (ogrenci.get(i).getOkulaBaslamaTarihi() != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+                data[i][8] = sdf.format(ogrenci.get(i).getOkulaBaslamaTarihi());
+            }
+            //data[i][8] = ogrenci.get(i).getAktif() != null ? ogrenci.get(i).getAktif().toString() : "";
+
+            if (ogrenci.get(i).getAktif() != null) {
+                data[i][9] = "Aktif";
+            } else {
+                data[i][9] = "Pasif";
+            }
+
+            if (ogrenci.get(i).getCinsiyet() == 0 && ogrenci.get(i).getCinsiyet() > -1) {
+                data[i][10] = "Erkek";
+            } else if (ogrenci.get(i).getCinsiyet() == 1 && ogrenci.get(i).getCinsiyet() > -1) {
+                data[i][10] = "Kadın";
+            } else if (ogrenci.get(i).getCinsiyet() == 2 && ogrenci.get(i).getCinsiyet() > -1) {
+                data[i][10] = "Diğer";
+            }
         }
 
         tblAnasayfa.setModel(new javax.swing.table.DefaultTableModel(
                 data,
                 new String[]{
-                    "Id", "Ad", "Soyad", "Kimlik No", "Adres", "Okul No", "Aktif"
+                    "Id", "Ad", "Soyad", "Kimlik No", "Bölüm Adı", "Adres", "Okul No", "Doğum Tarihi", "Okula Başlama Tarihi", "Aktif", "Cinsiyet"
                 }
         ));
+    }
+
+    private void kullaniciSil() {
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            int silisinMi = (JOptionPane.showConfirmDialog(rootPane, "Silmek İstediğinize Emin misiniz?"));
+            if (silisinMi == 0) {
+                String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+                Kullanici kullanici = kullaniciService.getById(new Long(value));
+                kullaniciService.delete(kullanici);
+                kullaniciTabloyuDoldur();
+            }
+        }
+
+    }
+
+    private void kullaniciGuncelle() {
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+            Kullanici k = kullaniciService.getById(new Long(value));
+            frmKullaniciEkle guncelle = new frmKullaniciEkle(this, true, k);
+            guncelle.show();
+            kullaniciTabloyuDoldur();
+        }
     }
 
 }

@@ -7,17 +7,14 @@ package com.vektorel.hibswingapp.ui;
 
 import com.vektorel.hibswingapp.entity.Bolum;
 import com.vektorel.hibswingapp.entity.Ogrenci;
-import com.vektorel.hibswingapp.enums.Cinsiyet;
 import com.vektorel.hibswingapp.service.BolumService;
 import com.vektorel.hibswingapp.service.OgrenciService;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import javafx.scene.control.DatePicker;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -59,14 +56,14 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         lblOkulNo = new javax.swing.JLabel();
         lblBaslamaTarihi = new javax.swing.JLabel();
         chkAktif = new javax.swing.JCheckBox();
-        txtBaslamaTarihi = new javax.swing.JFormattedTextField();
         btnOgrenciKaydet = new javax.swing.JButton();
         btnOgrenciIptal = new javax.swing.JButton();
         lblOgrenciId = new javax.swing.JLabel();
         txtOgrenciAdres = new javax.swing.JTextField();
         lblAdres = new javax.swing.JLabel();
         cmbCinsiyet = new javax.swing.JComboBox<>();
-        dchDogumTarihi = new com.toedter.calendar.JDateChooser();
+        jDDogumTarihi = new com.toedter.calendar.JDateChooser();
+        jDBaslamaTarihi = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -107,7 +104,7 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
 
         cmbCinsiyet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erkek", "Kadın", "Diğer" }));
 
-        dchDogumTarihi.setDateFormatString("dd.MM.yyyy");
+        jDDogumTarihi.setDateFormatString("dd.MM.yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +122,6 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
                     .addComponent(lblAdres, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtOgrenciAdres)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnOgrenciIptal, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(92, 92, 92)
@@ -138,23 +134,24 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
                             .addComponent(cmbBolum, 0, 167, Short.MAX_VALUE)
                             .addComponent(txtOgrenciSoyadi)
                             .addComponent(txtOgrenciAdi))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(chkAktif)
-                                    .addComponent(lblBaslamaTarihi))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBaslamaTarihi))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCinsiyet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblCinsiyet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbCinsiyet, 0, 117, Short.MAX_VALUE)
-                                    .addComponent(dchDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap())
+                                    .addComponent(jDDogumTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblBaslamaTarihi)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jDBaslamaTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(txtOgrenciAdres))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +164,7 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
                     .addComponent(lblCinsiyet)
                     .addComponent(cmbCinsiyet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblOgrenciSoyadi)
@@ -181,26 +178,24 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbBolum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblBolum)
-                            .addComponent(lblBaslamaTarihi)
-                            .addComponent(txtBaslamaTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkAktif)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtOkulNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblOkulNo)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtOgrenciAdres, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                            .addComponent(lblAdres))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnOgrenciIptal)
-                            .addComponent(btnOgrenciKaydet))
-                        .addGap(31, 31, 31))
+                            .addComponent(lblBaslamaTarihi)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dchDogumTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jDDogumTarihi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(jDBaslamaTarihi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOkulNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOkulNo)
+                    .addComponent(chkAktif))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOgrenciAdres, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(lblAdres))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOgrenciIptal)
+                    .addComponent(btnOgrenciKaydet)))
         );
 
         pack();
@@ -217,20 +212,19 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         try {
 
             OgrenciService ogrenciService = new OgrenciService();
-//            BolumService bolumService = new BolumService();
-//            Bolum bolum = bolumService.getById(cmbBolum.getSelectedItem().toString());
-            //bolum.getId()
+            BolumService bolumService = new BolumService();
+            Bolum bolum = bolumService.getById(cmbBolum.getSelectedItem().toString());
             
-            int i = cmbCinsiyet.getSelectedIndex();
-            //Date str = ((JTextField)dchDogumTarihi.getDateEditor().getUiComponent().get);
-            
+            boolean aktifMi = chkAktif.isSelected();
+
+
 
             if (lblOgrenciId.getText().trim().equals("")) {
 
-                ogrenciService.save(new Ogrenci(null, txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText(), cmbCinsiyet.getSelectedIndex()));
+                ogrenciService.save(new Ogrenci(null, txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText(), cmbCinsiyet.getSelectedIndex(), jDDogumTarihi.getDate(), bolum, jDBaslamaTarihi.getDate(), aktifMi));
             } else {
 
-                ogrenciService.update(new Ogrenci(new Long(lblOgrenciId.getText()), txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText(), cmbCinsiyet.getSelectedIndex()));
+                ogrenciService.update(new Ogrenci(new Long(lblOgrenciId.getText()), txtOgrenciAdi.getText(), txtOgrenciSoyadi.getText(), new Long(txtTCKimlikNo.getText()), txtOkulNo.getText(), txtOgrenciAdres.getText(), cmbCinsiyet.getSelectedIndex(), jDDogumTarihi.getDate(), bolum, jDBaslamaTarihi.getDate(), aktifMi));
             }
             this.dispose();
         } catch (Exception e) {
@@ -248,7 +242,8 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
     private javax.swing.JCheckBox chkAktif;
     private javax.swing.JComboBox<String> cmbBolum;
     private javax.swing.JComboBox<String> cmbCinsiyet;
-    private com.toedter.calendar.JDateChooser dchDogumTarihi;
+    private com.toedter.calendar.JDateChooser jDBaslamaTarihi;
+    private com.toedter.calendar.JDateChooser jDDogumTarihi;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAdres;
     private javax.swing.JLabel lblBaslamaTarihi;
@@ -259,7 +254,6 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
     private javax.swing.JLabel lblOgrenciId;
     private javax.swing.JLabel lblOgrenciSoyadi;
     private javax.swing.JLabel lblOkulNo;
-    private javax.swing.JFormattedTextField txtBaslamaTarihi;
     private javax.swing.JTextField txtOgrenciAdi;
     private javax.swing.JTextField txtOgrenciAdres;
     private javax.swing.JTextField txtOgrenciSoyadi;

@@ -37,7 +37,6 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtOgrenciAdres" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnOgrenciIptal" min="-2" pref="81" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
@@ -52,31 +51,32 @@
                           <Component id="txtOgrenciSoyadi" max="32767" attributes="0"/>
                           <Component id="txtOgrenciAdi" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="chkAktif" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblBaslamaTarihi" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtBaslamaTarihi" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblCinsiyet" max="32767" attributes="0"/>
-                                  <Component id="lblDogumTarihi" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblCinsiyet" max="32767" attributes="0"/>
+                                      <Component id="lblDogumTarihi" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cmbCinsiyet" pref="117" max="32767" attributes="0"/>
-                                  <Component id="dchDogumTarihi" max="32767" attributes="0"/>
+                                  <Component id="jDDogumTarihi" max="32767" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblBaslamaTarihi" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jDBaslamaTarihi" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
+                  <Component id="txtOgrenciAdres" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,8 +91,8 @@
                   <Component id="lblCinsiyet" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbCinsiyet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblOgrenciSoyadi" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -109,32 +109,29 @@
                           <Component id="cmbBolum" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblBolum" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtBaslamaTarihi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="chkAktif" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtOgrenciAdres" alignment="3" pref="59" max="32767" attributes="0"/>
-                          <Component id="lblAdres" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnOgrenciIptal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnOgrenciKaydet" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="dchDogumTarihi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jDDogumTarihi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="jDBaslamaTarihi" max="32767" attributes="0"/>
                   </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblOkulNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chkAktif" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtOgrenciAdres" alignment="3" pref="59" max="32767" attributes="0"/>
+                  <Component id="lblAdres" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnOgrenciIptal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnOgrenciKaydet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -205,8 +202,6 @@
         <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtBaslamaTarihi">
-    </Component>
     <Component class="javax.swing.JButton" name="btnOgrenciKaydet">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kaydet"/>
@@ -246,10 +241,12 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="dchDogumTarihi">
+    <Component class="com.toedter.calendar.JDateChooser" name="jDDogumTarihi">
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="dd.MM.yyyy"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDBaslamaTarihi">
     </Component>
   </SubComponents>
 </Form>

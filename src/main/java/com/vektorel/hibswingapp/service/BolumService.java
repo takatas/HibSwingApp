@@ -80,7 +80,7 @@ public class BolumService implements IService<Bolum> {
         public Bolum getById(String bolumadi) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Bolum.class);
-        criteria.add(Restrictions.eq("bolum_adi", bolumadi));
+        criteria.add(Restrictions.eq("bolumAdi", bolumadi));
         
         return (Bolum) criteria.uniqueResult();
     }
