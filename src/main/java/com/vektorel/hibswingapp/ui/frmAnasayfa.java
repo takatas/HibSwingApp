@@ -62,13 +62,16 @@ public class frmAnasayfa extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mnuOgrenciEkle = new javax.swing.JMenuItem();
         mnuOgrenciListele = new javax.swing.JMenuItem();
+        mnuOgrenciDuzenle = new javax.swing.JMenuItem();
         mnuBolum = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         mnuBolumEkle = new javax.swing.JMenuItem();
         mnuBolumListele = new javax.swing.JMenuItem();
+        mnuBolumDuzenle = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         mnuIlEkle = new javax.swing.JMenuItem();
         mnuIlListesi = new javax.swing.JMenuItem();
+        mnuIlGuncelle = new javax.swing.JMenuItem();
 
         jPopUpGuncelle.setText("Güncelle");
         jPopUpGuncelle.setToolTipText("");
@@ -161,6 +164,14 @@ public class frmAnasayfa extends javax.swing.JFrame {
         });
         jMenu2.add(mnuOgrenciListele);
 
+        mnuOgrenciDuzenle.setText("Öğrenci Düzenle");
+        mnuOgrenciDuzenle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuOgrenciDuzenleActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuOgrenciDuzenle);
+
         jMenuBar1.add(jMenu2);
 
         mnuBolum.setText("Tanımlar");
@@ -183,6 +194,14 @@ public class frmAnasayfa extends javax.swing.JFrame {
         });
         jMenu4.add(mnuBolumListele);
 
+        mnuBolumDuzenle.setText("Bölüm Düzenle");
+        mnuBolumDuzenle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuBolumDuzenleActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mnuBolumDuzenle);
+
         mnuBolum.add(jMenu4);
 
         jMenu3.setText("İl");
@@ -202,6 +221,14 @@ public class frmAnasayfa extends javax.swing.JFrame {
             }
         });
         jMenu3.add(mnuIlListesi);
+
+        mnuIlGuncelle.setText("İl Güncelle");
+        mnuIlGuncelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIlGuncelleActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnuIlGuncelle);
 
         mnuBolum.add(jMenu3);
 
@@ -286,6 +313,38 @@ public class frmAnasayfa extends javax.swing.JFrame {
         kullaniciSil();
     }//GEN-LAST:event_jPopUpSilActionPerformed
 
+    private void mnuOgrenciDuzenleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOgrenciDuzenleActionPerformed
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+            Ogrenci ogrenci = ogrenciService.getById(new Long(value));
+            frmOgrenciEkle guncelle = new frmOgrenciEkle(this, true, ogrenci);
+            guncelle.show();
+            ogrenciTabloyuDoldur();
+        }
+    }//GEN-LAST:event_mnuOgrenciDuzenleActionPerformed
+
+    private void mnuBolumDuzenleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBolumDuzenleActionPerformed
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+            Bolum bolum = bolumService.getById(new Long(value));
+            frmBolumEkle guncelle = new frmBolumEkle(this, true, bolum);
+            guncelle.show();
+            bolumTabloyuDoldur();
+        }
+    }//GEN-LAST:event_mnuBolumDuzenleActionPerformed
+
+    private void mnuIlGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIlGuncelleActionPerformed
+        int seciliKayit = tblAnasayfa.getSelectedRow();
+        if (seciliKayit > -1) {
+            String value = tblAnasayfa.getValueAt(seciliKayit, 0).toString();
+            Il il = ilService.getById(new Long(value));
+            frmIlEkle guncelle = new frmIlEkle(this, true, il);
+            guncelle.show();
+            IlTabloyuDoldur();
+    }//GEN-LAST:event_mnuIlGuncelleActionPerformed
+
     /**
          * @param args the command line arguments
          */
@@ -300,14 +359,17 @@ public class frmAnasayfa extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mnuBolum;
+    private javax.swing.JMenuItem mnuBolumDuzenle;
     private javax.swing.JMenuItem mnuBolumEkle;
     private javax.swing.JMenuItem mnuBolumListele;
     private javax.swing.JMenuItem mnuIlEkle;
+    private javax.swing.JMenuItem mnuIlGuncelle;
     private javax.swing.JMenuItem mnuIlListesi;
     private javax.swing.JMenuItem mnuKullaniciEkle;
     private javax.swing.JMenuItem mnuKullaniciGuncelle;
     private javax.swing.JMenuItem mnuKullaniciListesi;
     private javax.swing.JMenuItem mnuKullaniciSil;
+    private javax.swing.JMenuItem mnuOgrenciDuzenle;
     private javax.swing.JMenuItem mnuOgrenciEkle;
     private javax.swing.JMenuItem mnuOgrenciListele;
     private javax.swing.JTable tblAnasayfa;

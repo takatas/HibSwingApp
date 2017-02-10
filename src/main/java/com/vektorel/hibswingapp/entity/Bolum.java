@@ -26,6 +26,19 @@ public class Bolum implements Serializable {
     private Long id;
     private String kod;
     private String bolumAdi;
+    
+    public Bolum(){
+        
+        
+    }
+
+    public Bolum(Long id, String kod, String bolumAdi) {
+        
+        this.id = id;
+        this.kod = kod;
+        this.bolumAdi = bolumAdi;
+        
+    }
 
     @Id
     @SequenceGenerator (name = "seq_bolum",allocationSize = 1, sequenceName = "seq_bolum")

@@ -26,6 +26,17 @@ public class frmIlEkle extends javax.swing.JDialog {
         lblIlId.setVisible(false);
     }
 
+    frmIlEkle(java.awt.Frame parent, boolean modal, Il il) {
+        super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(null);
+        
+        lblIlId.setText(il.getId().toString());
+        txtIlAdi.setText(il.getAdi());
+        txtIlKodu.setText(il.getKodu());
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

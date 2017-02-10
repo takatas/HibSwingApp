@@ -30,7 +30,37 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         bolumComboDoldur();
+
+    }
+
+    frmOgrenciEkle(java.awt.Frame parent, boolean modal, Ogrenci ogrenci) {
+        super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(null);
+
+        txtOgrenciAdi.setText(ogrenci.getAd());
+        txtOgrenciSoyadi.setText(ogrenci.getSoyad());
+        txtTCKimlikNo.setText(ogrenci.getTcKimlikNo().toString());
+        txtOkulNo.setText(ogrenci.getOkulNo());
+        txtOgrenciAdres.setText(ogrenci.getAdres());
+        cmbBolum.addItem(ogrenci.getBolum().getBolumAdi());
+        cmbCinsiyet.addItem(ogrenci.getCinsiyet().toString());
         
+
+        if (ogrenci.getOkulaBaslamaTarihi() != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+            jDBaslamaTarihi.setDate(ogrenci.getOkulaBaslamaTarihi());
+        }
+
+        if (ogrenci.getDogumTarihi()!= null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+            jDDogumTarihi.setDate(ogrenci.getDogumTarihi());
+        }
+
+        if (ogrenci.getAktif()) {
+            chkAktif.isEnabled();
+        }
+
     }
 
     /**
@@ -105,6 +135,8 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         cmbCinsiyet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erkek", "Kadın", "Diğer" }));
 
         jDDogumTarihi.setDateFormatString("dd.MM.yyyy");
+
+        jDBaslamaTarihi.setDateFormatString("dd.MM.yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,17 +240,13 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
 
     private void btnOgrenciKaydetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrenciKaydetActionPerformed
 
-
-        
         try {
 
             OgrenciService ogrenciService = new OgrenciService();
             BolumService bolumService = new BolumService();
             Bolum bolum = bolumService.getById(cmbBolum.getSelectedItem().toString());
-            
+
             boolean aktifMi = chkAktif.isSelected();
-
-
 
             if (lblOgrenciId.getText().trim().equals("")) {
 
@@ -270,9 +298,10 @@ public class frmOgrenciEkle extends javax.swing.JDialog {
         for (int i = 0; i < bolum.size(); i++) {
             data[i] = bolum.get(i).getBolumAdi();
             cmbBolum.addItem(bolum.get(i).getBolumAdi());
-            
+
         }
     }
+    
     
 
 }

@@ -25,8 +25,16 @@ public class frmBolumEkle extends javax.swing.JDialog {
         
     }
 
-    frmBolumEkle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    frmBolumEkle(java.awt.Frame parent, boolean modal, Bolum bolum) {
+        super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(null);    
+        
+        lblBolumId.setText(bolum.getId().toString());
+        txtBolumKodu.setText(bolum.getKod());
+        txtBolumAdi.setText(bolum.getBolumAdi());
+    
     }
 
     /**
@@ -44,6 +52,7 @@ public class frmBolumEkle extends javax.swing.JDialog {
         txtBolumAdi = new javax.swing.JTextField();
         btnBolumIptal = new javax.swing.JButton();
         btnBolumKaydet = new javax.swing.JButton();
+        lblBolumId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,6 +81,11 @@ public class frmBolumEkle extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(btnBolumIptal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBolumKaydet))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblBolumKodu)
@@ -79,18 +93,16 @@ public class frmBolumEkle extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtBolumKodu)
-                            .addComponent(txtBolumAdi)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(btnBolumIptal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBolumKaydet)))
+                            .addComponent(txtBolumAdi)
+                            .addComponent(lblBolumId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
+                .addComponent(lblBolumId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBolumKodu)
                     .addComponent(txtBolumKodu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -102,7 +114,7 @@ public class frmBolumEkle extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBolumIptal)
                     .addComponent(btnBolumKaydet))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,14 +125,15 @@ public class frmBolumEkle extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBolumIptalActionPerformed
 
     private void btnBolumKaydetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolumKaydetActionPerformed
+        
         try {
             BolumService bolumService = new BolumService();
-            Bolum bolum = new Bolum();
-            bolum.setKod(txtBolumKodu.getText());
-            bolum.setBolumAdi(txtBolumAdi.getText());
-            bolumService.save(bolum);
+            if (lblBolumId.getText().trim().equals("")) {
+                bolumService.save(new Bolum(null, txtBolumKodu.getText(), txtBolumAdi.getText()));
+            } else {
+                bolumService.update(new Bolum(new Long(lblBolumId.getText()), txtBolumKodu.getText(), txtBolumAdi.getText()));
+            }
             this.dispose();
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -135,6 +148,7 @@ public class frmBolumEkle extends javax.swing.JDialog {
     private javax.swing.JButton btnBolumIptal;
     private javax.swing.JButton btnBolumKaydet;
     private javax.swing.JLabel lblBolumAdi;
+    private javax.swing.JLabel lblBolumId;
     private javax.swing.JLabel lblBolumKodu;
     private javax.swing.JTextField txtBolumAdi;
     private javax.swing.JTextField txtBolumKodu;
